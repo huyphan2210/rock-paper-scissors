@@ -15,7 +15,7 @@
   </div>
 </section>
 
-<style lang="scss">
+<style lang="scss" scoped>
   #score-section {
     width: calc(100% - 3.25rem);
     max-width: calc(60rem - 3.25rem);
