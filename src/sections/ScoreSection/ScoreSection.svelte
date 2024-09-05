@@ -18,10 +18,10 @@
 <style lang="scss" scoped>
   #score-section {
     width: calc(100% - 3.25rem);
-    max-width: calc(60rem - 3.25rem);
+    max-width: 37rem;
     border-radius: 0.5rem;
     border: solid 0.125rem var(--header-outline);
-    padding: 1.5rem;
+    padding: 1rem 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -43,7 +43,7 @@
     .score {
       background-color: white;
       border-radius: 0.5rem;
-      padding: 1.5rem 3rem;
+      padding: 1rem 3rem;
 
       label {
         color: var(--score-text);
