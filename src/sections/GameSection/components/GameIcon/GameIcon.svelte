@@ -25,10 +25,9 @@
     transform: translate(-50%, -50%);
     left: 50%;
     top: 0;
-    border-radius: 50%;
-    width: 30%;
-    aspect-ratio: 1;
-    border-style: solid;
+    border: none;
+    background-color: transparent;
+    padding: 0;
 
     &:nth-child(2) {
       left: 100%;

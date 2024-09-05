@@ -1,18 +1,14 @@
 <script lang="ts">
   import pentagonSvg from "../../assets/images/bg-pentagon.svg";
   import type { GameIconProps } from "./components/GameIcon/GameIcon.svelte";
-  import iconRock from "../../assets/images/icon-rock.svg";
-  import iconPaper from "../../assets/images/icon-paper.svg";
-  import iconScissors from "../../assets/images/icon-scissors.svg";
-  import iconLizard from "../../assets/images/icon-lizard.svg";
-  import iconSpock from "../../assets/images/icon-spock.svg";
+  import iconRock from "../../assets/images/rock.svg";
+  import iconPaper from "../../assets/images/paper.svg";
+  import iconScissors from "../../assets/images/scissors.svg";
+  import iconLizard from "../../assets/images/lizard.svg";
+  import iconSpock from "../../assets/images/spock.svg";
   import GameIcon from "./components/GameIcon/GameIcon.svelte";
 
   const gameIcons: GameIconProps[] = [
-    {
-      iconImage: iconRock,
-      iconName: "Rock",
-    },
     {
       iconImage: iconPaper,
       iconName: "Paper",
@@ -28,6 +24,10 @@
     {
       iconImage: iconSpock,
       iconName: "Spock",
+    },
+    {
+      iconImage: iconRock,
+      iconName: "Rock",
     },
   ];
 </script>
@@ -60,7 +60,7 @@
   .pentagon {
     position: relative;
     transform: scale($base-scale);
-    @include responsive-scale(1);
+    // @include responsive-scale(1);
     img {
       width: 100%;
     }
