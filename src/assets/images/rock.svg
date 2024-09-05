@@ -1,0 +1,44 @@
+<svg width="153" height="159" viewBox="0 0 153 159" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g filter="url(#filter0_d_1_28)">
+    <circle cx="76.5" cy="76.5" r="64.5" fill="white" />
+    <circle cx="76.5" cy="76.5" r="70.5" stroke="#DD405D" stroke-width="12" />
+  </g>
+  <g filter="url(#filter1_i_1_28)">
+    <circle cx="76.5" cy="76.5" r="64.5" fill="white" />
+  </g>
+  <g clip-path="url(#clip0_1_28)">
+    <path
+      d="M97.06 64.22C96.418 56.124 87.326 56.951 87.326 56.951C83.489 50.186 77.494 55.086 77.494 55.086C72.888 48.456 67.114 54.6 67.114 54.6C57.157 53.526 57.543 61.666 57.543 61.666C57.309 64.254 58.946 72.259 58.946 72.259C57.469 67.645 54.266 71.475 54.266 71.475C50.326 77.553 53.291 80.88 53.291 80.88C58.621 87.126 69.979 94.623 69.979 94.623C74.092 96.979 72.352 99.08 72.352 99.08L97.228 94.97L97.799 90.252C101.581 78.816 97.06 64.22 97.06 64.22Z"
+      fill="#3B4262" />
+  </g>
+  <defs>
+    <filter id="filter0_d_1_28" x="0" y="0" width="153" height="159" filterUnits="userSpaceOnUse"
+      color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix" />
+      <feColorMatrix in="SourceAlpha" type="matrix"
+        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+      <feOffset dy="6" />
+      <feComposite in2="hardAlpha" operator="out" />
+      <feColorMatrix type="matrix"
+        values="0 0 0 0 0.8608 0 0 0 0 0.1792 0 0 0 0 0.30416 0 0 0 0.75 0" />
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_28" />
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_28" result="shape" />
+    </filter>
+    <filter id="filter1_i_1_28" x="12" y="12" width="129" height="129" filterUnits="userSpaceOnUse"
+      color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix" />
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+      <feColorMatrix in="SourceAlpha" type="matrix"
+        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+      <feOffset dy="6" />
+      <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+      <feColorMatrix type="matrix"
+        values="0 0 0 0 0.729412 0 0 0 0 0.74902 0 0 0 0 0.835294 0 0 0 0.5 0" />
+      <feBlend mode="normal" in2="shape" result="effect1_innerShadow_1_28" />
+    </filter>
+    <clipPath id="clip0_1_28">
+      <rect width="48" height="48" fill="white" transform="translate(52 52)" />
+    </clipPath>
+  </defs>
+</svg>
+  
