@@ -8,26 +8,28 @@
   import iconSpock from "../../assets/images/spock.svg";
   import GameIcon from "./components/GameIcon/GameIcon.svelte";
 
+  import { Choice } from "../../store/ScoreStore";
+
   const gameIcons: GameIconProps[] = [
     {
       iconImage: iconPaper,
-      iconName: "Paper",
+      iconName: Choice.Paper,
     },
     {
       iconImage: iconScissors,
-      iconName: "Scissors",
+      iconName: Choice.Scissors,
     },
     {
       iconImage: iconLizard,
-      iconName: "Lizard",
+      iconName: Choice.Lizard,
     },
     {
       iconImage: iconSpock,
-      iconName: "Spock",
+      iconName: Choice.Spock,
     },
     {
       iconImage: iconRock,
-      iconName: "Rock",
+      iconName: Choice.Rock,
     },
   ];
 </script>
@@ -42,13 +44,6 @@
 </section>
 
 <style lang="scss" scoped>
-  $base-scale: 80%;
-  @mixin responsive-scale($scale-factor) {
-    @media (min-width: 1024px) {
-      transform: scale($scale-factor * 1.2);
-    }
-  }
-
   #game-section {
     width: 100%;
     height: 50vh;
@@ -59,10 +54,15 @@
 
   .pentagon {
     position: relative;
-    transform: scale($base-scale);
-    // @include responsive-scale(1);
+    transform: scale(70%);
     img {
       width: 100%;
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    .pentagon {
+      transform: scale(1);
     }
   }
 </style>
