@@ -1,21 +1,27 @@
 <script context="module" lang="ts">
   export interface GameIconProps {
     iconImage: string;
-    iconName: string;
+    iconName?: Choice;
   }
 
   export const defaultProps: GameIconProps = {
     iconImage: "",
-    iconName: "",
+    iconName: undefined,
   };
 </script>
 
 <script lang="ts">
+  import { Choice, setPlayerChoice } from "../../../../store/ScoreStore";
+
   export let iconImage: string = defaultProps.iconImage;
-  export let iconName: string = defaultProps.iconName;
+  export let iconName = defaultProps.iconName;
+
+  const handlePlayerChoice = () => {
+    setPlayerChoice(iconName);
+  };
 </script>
 
-<button type="button" title={iconName}>
+<button on:click={handlePlayerChoice} type="button" title={iconName}>
   <img src={iconImage} loading="lazy" alt={iconName} />
 </button>
 
