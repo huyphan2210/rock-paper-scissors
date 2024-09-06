@@ -18,7 +18,7 @@
 <style lang="scss" scoped>
   #score-section {
     width: calc(100% - 3.25rem);
-    max-width: 37rem;
+    max-width: 56.75rem;
     border-radius: 0.5rem;
     border: solid 0.125rem var(--header-outline);
     padding: 1rem 1.5rem;
