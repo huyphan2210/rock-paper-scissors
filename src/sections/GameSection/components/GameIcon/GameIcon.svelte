@@ -17,6 +17,7 @@
   export let iconName = defaultProps.iconName;
 
   const handlePlayerChoice = () => {
+    //To do: add animation
     setPlayerChoice(iconName);
   };
 </script>
@@ -26,15 +27,15 @@
 </button>
 
 <style lang="scss" scoped>
+  @use "sass:math";
   button {
     position: absolute;
-    transform: translate(-50%, -50%);
     left: 50%;
     top: 0;
     border: none;
     background-color: transparent;
     padding: 0;
-
+    animation: circling 50s infinite;
     &:nth-child(2) {
       left: 100%;
       top: 38%;
@@ -57,6 +58,17 @@
 
     &:hover {
       cursor: pointer;
+    }
+  }
+
+  @keyframes circling {
+    0% {
+      transform: translate(-50%, -50%);
+    }
+    @for $i from 1 through 300 {
+      #{math.div($i, 3) + "%"} {
+        transform: translate(-50%, -50%) rotate(#{-1.2 * $i}deg);
+      }
     }
   }
 </style>
