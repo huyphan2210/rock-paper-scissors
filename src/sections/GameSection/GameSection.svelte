@@ -16,8 +16,8 @@
       iconName: Choice.Paper,
     },
     {
-      iconImage: iconScissors,
-      iconName: Choice.Scissors,
+      iconImage: iconRock,
+      iconName: Choice.Rock,
     },
     {
       iconImage: iconLizard,
@@ -27,9 +27,10 @@
       iconImage: iconSpock,
       iconName: Choice.Spock,
     },
+
     {
-      iconImage: iconRock,
-      iconName: Choice.Rock,
+      iconImage: iconScissors,
+      iconName: Choice.Scissors,
     },
   ];
 </script>
@@ -44,6 +45,7 @@
 </section>
 
 <style lang="scss" scoped>
+  @use "sass:math";
   #game-section {
     width: 100%;
     height: 50vh;
@@ -54,15 +56,34 @@
 
   .pentagon {
     position: relative;
-    transform: scale(70%);
+    animation: circling 50s infinite;
     img {
       width: 100%;
+    }
+  }
+
+  @keyframes circling {
+    0% {
+      transform: scale(70%);
+    }
+    @for $i from 1 through 300 {
+      #{math.div($i, 3) + "%"} {
+        transform: scale(70%) rotate(#{1.2 * $i}deg);
+      }
     }
   }
 
   @media screen and (min-width: 1280px) {
     .pentagon {
       transform: scale(1);
+    }
+
+    @keyframes circling {
+      @for $i from 1 through 300 {
+        #{math.div($i, 3) + "%"} {
+          transform: rotate(#{1.2 * $i}deg);
+        }
+      }
     }
   }
 </style>
