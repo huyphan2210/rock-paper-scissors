@@ -8,7 +8,11 @@
   import iconSpock from "../../assets/images/spock.svg";
   import GameIcon from "./components/GameIcon/GameIcon.svelte";
 
-  import { Choice } from "../../store/ScoreStore";
+  import {
+    Choice,
+    playerChoice,
+    setPlayerChoice,
+  } from "../../store/ScoreStore";
 
   const gameIcons: GameIconProps[] = [
     {
@@ -33,14 +37,34 @@
       iconName: Choice.Scissors,
     },
   ];
+
+  const handlePlayerChoice = (iconName?: Choice) => {
+    setPlayerChoice(iconName);
+  };
 </script>
 
 <section id="game-section">
-  <div class="pentagon">
-    <img src={pentagonSvg} loading="lazy" alt="Pentagon" />
+  <div class="pentagon" class:no-animation={$playerChoice}>
+    <img
+      class:invisible={$playerChoice}
+      src={pentagonSvg}
+      loading="lazy"
+      alt="Pentagon"
+    />
     {#each gameIcons as { iconImage, iconName }}
-      <GameIcon {iconImage} {iconName} />
+      <GameIcon
+        isTheHouse={false}
+        {iconImage}
+        {iconName}
+        {handlePlayerChoice}
+      />
     {/each}
+    <GameIcon
+      isTheHouse
+      iconImage={iconLizard}
+      iconName={Choice.Lizard}
+      {handlePlayerChoice}
+    />
   </div>
 </section>
 
@@ -57,8 +81,17 @@
   .pentagon {
     position: relative;
     animation: circling 50s infinite;
+
+    &.no-animation {
+      animation-play-state: paused;
+    }
+
     img {
       width: 100%;
+
+      &.invisible {
+        opacity: 0;
+      }
     }
   }
 
