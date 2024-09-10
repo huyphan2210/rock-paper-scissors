@@ -3,9 +3,10 @@
   import iconClose from "../../assets/images/icon-close.svg";
 
   export let closeRules: () => void;
+  export let isRulesOn: boolean;
 </script>
 
-<section id="rules-section">
+<section id="rules-section" class={isRulesOn ? "visible" : ""}>
   <h2>RULES</h2>
   <img src={rules} loading="lazy" alt="The rules" />
   <button on:click={closeRules} type="button">
@@ -26,8 +27,13 @@
     display: grid;
     place-items: center;
     padding: 2rem;
-    z-index: 1;
-    animation: dissolve 0.3s;
+    z-index: -1;
+    opacity: 0;
+
+    &.visible {
+      opacity: 1;
+      z-index: 1;
+    }
     h2 {
       color: var(--dark-text);
       margin-block: 0;
@@ -46,16 +52,6 @@
       &:hover {
         cursor: pointer;
       }
-    }
-  }
-
-  @keyframes dissolve {
-    0% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
     }
   }
 
