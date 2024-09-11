@@ -21,8 +21,7 @@
 </script>
 
 <button
-  class:chosen={!isTheHouse && $playerChoice && $playerChoice === iconName}
-  class:invisible={!isTheHouse && $playerChoice && $playerChoice !== iconName}
+  class:paused-animation={$playerChoice}
   class:the-house-choice={isTheHouse}
   class:the-house-reveal={isTheHouse && $playerChoice}
   on:click={() => {
@@ -68,26 +67,15 @@
       cursor: pointer;
     }
 
-    &.chosen {
-      position: fixed;
-      scale: 1.5;
-      left: unset;
-      right: 100%;
-      top: 50%;
+    &.paused-animation {
       animation-play-state: paused;
-    }
-
-    &.invisible {
-      animation-play-state: paused;
-      opacity: 0;
-      cursor: none;
-      pointer-events: none;
     }
 
     &.the-house-choice {
       position: fixed;
-      left: 100%;
-      top: 0;
+      left: unset;
+      top: 50%;
+      right: 20%;
       cursor: none;
       pointer-events: none;
       animation: none;
@@ -107,12 +95,10 @@
 
   @keyframes circling {
     0% {
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%) rotate(0deg);
     }
-    @for $i from 1 through 300 {
-      #{math.div($i, 3) + "%"} {
-        transform: translate(-50%, -50%) rotate(#{-1.2 * $i}deg);
-      }
+    100% {
+      transform: translate(-50%, -50%) rotate(-360deg);
     }
   }
 </style>
