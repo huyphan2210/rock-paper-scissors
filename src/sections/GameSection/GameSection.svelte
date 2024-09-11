@@ -41,16 +41,23 @@
   const handlePlayerChoice = (iconName?: Choice) => {
     setPlayerChoice(iconName);
   };
+  let gameSection: HTMLElement;
+  playerChoice.subscribe((choice) => {
+    if (gameSection) {
+      if (choice) {
+        setTimeout(() => {
+          gameSection.style.display = "none";
+        }, 1000);
+      } else {
+        gameSection.style.display = "block";
+      }
+    }
+  });
 </script>
 
-<section id="game-section">
-  <div class="pentagon" class:no-animation={$playerChoice}>
-    <img
-      class:invisible={$playerChoice}
-      src={pentagonSvg}
-      loading="lazy"
-      alt="Pentagon"
-    />
+<section id="game-section" bind:this={gameSection}>
+  <div class="pentagon" class:invisible={$playerChoice}>
+    <img src={pentagonSvg} loading="lazy" alt="Pentagon" />
     {#each gameIcons as { iconImage, iconName }}
       <GameIcon
         isTheHouse={false}
@@ -59,12 +66,6 @@
         {handlePlayerChoice}
       />
     {/each}
-    <GameIcon
-      isTheHouse
-      iconImage={iconLizard}
-      iconName={Choice.Lizard}
-      {handlePlayerChoice}
-    />
   </div>
 </section>
 
@@ -76,45 +77,39 @@
     margin-top: 10vh;
     display: grid;
     place-items: center;
-  }
-
-  .pentagon {
-    position: relative;
-    animation: circling 50s infinite;
-
-    &.no-animation {
-      animation-play-state: paused;
-    }
-
-    img {
-      width: 100%;
+    .pentagon {
+      position: relative;
+      animation: circling 50s infinite;
 
       &.invisible {
         opacity: 0;
       }
-    }
-  }
 
-  @keyframes circling {
-    0% {
-      transform: scale(70%);
-    }
-    @for $i from 1 through 300 {
-      #{math.div($i, 3) + "%"} {
-        transform: scale(70%) rotate(#{1.2 * $i}deg);
+      img {
+        width: 100%;
+      }
+
+      @keyframes circling {
+        0% {
+          transform: scale(70%) rotate(0deg);
+        }
+        100% {
+          transform: scale(70%) rotate(360deg);
+        }
       }
     }
   }
 
   @media screen and (min-width: 1280px) {
-    .pentagon {
-      transform: scale(1);
-    }
-
-    @keyframes circling {
-      @for $i from 1 through 300 {
-        #{math.div($i, 3) + "%"} {
-          transform: rotate(#{1.2 * $i}deg);
+    #game-section {
+      .pentagon {
+        @keyframes circling {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
         }
       }
     }
