@@ -1,11 +1,5 @@
 <script lang="ts">
   import pentagonSvg from "../../assets/images/bg-pentagon.svg";
-  import type { GameIconProps } from "./components/GameIcon/GameIcon.svelte";
-  import iconRock from "../../assets/images/rock.svg";
-  import iconPaper from "../../assets/images/paper.svg";
-  import iconScissors from "../../assets/images/scissors.svg";
-  import iconLizard from "../../assets/images/lizard.svg";
-  import iconSpock from "../../assets/images/spock.svg";
   import GameIcon from "./components/GameIcon/GameIcon.svelte";
 
   import {
@@ -13,30 +7,7 @@
     playerChoice,
     setPlayerChoice,
   } from "../../store/ScoreStore";
-
-  const gameIcons: GameIconProps[] = [
-    {
-      iconImage: iconPaper,
-      iconName: Choice.Paper,
-    },
-    {
-      iconImage: iconRock,
-      iconName: Choice.Rock,
-    },
-    {
-      iconImage: iconLizard,
-      iconName: Choice.Lizard,
-    },
-    {
-      iconImage: iconSpock,
-      iconName: Choice.Spock,
-    },
-
-    {
-      iconImage: iconScissors,
-      iconName: Choice.Scissors,
-    },
-  ];
+  import { gameIcons } from "../../utilities/gameUtil";
 
   const handlePlayerChoice = (iconName?: Choice) => {
     setPlayerChoice(iconName);
@@ -49,7 +20,7 @@
           gameSection.style.display = "none";
         }, 1000);
       } else {
-        gameSection.style.display = "block";
+        gameSection.style.display = "grid";
       }
     }
   });
@@ -60,6 +31,7 @@
     <img src={pentagonSvg} loading="lazy" alt="Pentagon" />
     {#each gameIcons as { iconImage, iconName }}
       <GameIcon
+        isPlayer={false}
         isTheHouse={false}
         {iconImage}
         {iconName}
