@@ -1,9 +1,4 @@
 <script context="module" lang="ts">
-  export interface GameIconProps {
-    iconImage?: string;
-    iconName?: Choice;
-  }
-
   export const defaultProps: GameIconProps = {
     iconImage: "",
     iconName: undefined,
@@ -12,16 +7,18 @@
 
 <script lang="ts">
   import { Choice, playerChoice } from "../../../../store/ScoreStore";
+  import type { GameIconProps } from "../../../../utilities/gameUtil";
 
   export let iconImage: string | undefined = defaultProps.iconImage;
   export let iconName = defaultProps.iconName;
+  export let isPlayer: boolean;
   export let isTheHouse: boolean;
 
   export let handlePlayerChoice = (iconName?: Choice) => {};
 </script>
 
 <button
-  class:paused-animation={$playerChoice}
+  class:player-choice={$playerChoice && isPlayer}
   class:the-house-choice={isTheHouse}
   class:the-house-reveal={isTheHouse && $playerChoice}
   on:click={() => {
@@ -67,26 +64,32 @@
       cursor: pointer;
     }
 
-    &.paused-animation {
-      animation-play-state: paused;
+    &.player-choice {
+      position: static;
+      animation: none;
+      cursor: none;
+      pointer-events: none;
+      width: 25%;
+      min-width: 8rem;
+      img {
+        width: 100%;
+      }
     }
 
     &.the-house-choice {
-      position: fixed;
-      left: unset;
-      top: 50%;
-      right: 20%;
+      position: static;
       cursor: none;
       pointer-events: none;
       animation: none;
-
+      width: 25%;
+      min-width: 8rem;
       img {
+        width: 100%;
         opacity: 0;
       }
     }
 
     &.the-house-reveal {
-      scale: 1.5;
       img {
         opacity: 1;
       }
