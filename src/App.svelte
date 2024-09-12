@@ -1,7 +1,9 @@
 <script lang="ts">
   import GameSection from "./sections/GameSection/GameSection.svelte";
+  import ResultSection from "./sections/ResultSection/ResultSection.svelte";
   import RulesSection from "./sections/RulesSection/RulesSection.svelte";
   import ScoreSection from "./sections/ScoreSection/ScoreSection.svelte";
+  import { playerChoice } from "./store/ScoreStore";
 
   let isRulesOn = false;
 
@@ -13,6 +15,9 @@
 <ScoreSection />
 <GameSection />
 <RulesSection {isRulesOn} closeRules={toggleRules} />
+{#if $playerChoice}
+  <ResultSection />
+{/if}
 <button on:click={toggleRules} type="button">RULES</button>
 
 <style lang="scss" scoped>
