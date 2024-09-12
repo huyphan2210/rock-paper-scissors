@@ -33,6 +33,7 @@ body {
     align-items: center;
     position: relative;
     overflow: hidden;
+    gap: clamp(3rem, 5vh, 5rem);
   }
 }
 
