@@ -38,39 +38,20 @@ export const calculateResult = (
   playerChoice: Choice,
   theHouseChoice: Choice
 ) => {
+  if (playerChoice === theHouseChoice) return 0;
   const win = didPlayerWin(playerChoice, theHouseChoice);
   if (win) return 1;
-  const lose = didPlayerLose(playerChoice, theHouseChoice);
-  if (lose) return -1;
-  return 0;
+  return -1;
+};
+
+const winConditions: Record<Choice, Choice[]> = {
+  [Choice.Rock]: [Choice.Lizard, Choice.Scissors],
+  [Choice.Lizard]: [Choice.Spock, Choice.Paper],
+  [Choice.Spock]: [Choice.Scissors, Choice.Rock],
+  [Choice.Scissors]: [Choice.Paper, Choice.Lizard],
+  [Choice.Paper]: [Choice.Rock, Choice.Spock],
 };
 
 const didPlayerWin = (playerChoice: Choice, theHouseChoice: Choice) => {
-  switch (playerChoice) {
-    case Choice.Rock:
-      return theHouseChoice === Choice.Lizard;
-    case Choice.Lizard:
-      return theHouseChoice === Choice.Spock;
-    case Choice.Spock:
-      return theHouseChoice === Choice.Scissors;
-    case Choice.Scissors:
-      return theHouseChoice === Choice.Paper;
-    case Choice.Paper:
-      return Choice.Rock;
-  }
-};
-
-const didPlayerLose = (playerChoice: Choice, theHouseChoice: Choice) => {
-  switch (theHouseChoice) {
-    case Choice.Rock:
-      return playerChoice === Choice.Lizard;
-    case Choice.Lizard:
-      return playerChoice === Choice.Spock;
-    case Choice.Spock:
-      return playerChoice === Choice.Scissors;
-    case Choice.Scissors:
-      return playerChoice === Choice.Paper;
-    case Choice.Paper:
-      return Choice.Rock;
-  }
+  return winConditions[playerChoice].includes(theHouseChoice);
 };
