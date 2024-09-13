@@ -21,6 +21,7 @@
         }, 1000);
       } else {
         gameSection.style.display = "grid";
+        gameSection.style.height = "";
       }
     }
   });
