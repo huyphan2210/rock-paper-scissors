@@ -6,16 +6,26 @@
   import { playerChoice } from "./store/ScoreStore";
 
   let isRulesOn = false;
-
+  let isResultRevealed = false;
   const toggleRules = () => {
     isRulesOn = !isRulesOn;
   };
+
+  playerChoice.subscribe((value) => {
+    if (value) {
+      setTimeout(() => {
+        isResultRevealed = true;
+      }, 1000);
+    } else {
+      isResultRevealed = false;
+    }
+  });
 </script>
 
 <ScoreSection />
 <GameSection />
 <RulesSection {isRulesOn} closeRules={toggleRules} />
-{#if $playerChoice}
+{#if isResultRevealed}
   <ResultSection />
 {/if}
 <button on:click={toggleRules} type="button">RULES</button>
