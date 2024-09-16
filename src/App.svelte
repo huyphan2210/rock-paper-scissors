@@ -1,4 +1,5 @@
 <script lang="ts">
+  import EffectSection from "./sections/EffectSection/EffectSection.svelte";
   import GameSection from "./sections/GameSection/GameSection.svelte";
   import ResultSection from "./sections/ResultSection/ResultSection.svelte";
   import RulesSection from "./sections/RulesSection/RulesSection.svelte";
@@ -28,14 +29,11 @@
 {#if isResultRevealed}
   <ResultSection />
 {/if}
+<EffectSection />
 <button on:click={toggleRules} type="button">RULES</button>
 
 <style lang="scss" scoped>
   button {
-    position: absolute;
-    left: 50%;
-    bottom: 2rem;
-    transform: translateX(-50%);
     padding: 1rem 2rem;
     background-color: transparent;
     border: solid 0.125rem var(--header-outline);
@@ -52,9 +50,7 @@
 
   @media screen and (min-width: 1024px) {
     button {
-      right: 2rem;
-      left: unset;
-      transform: none;
+      align-self: flex-end;
     }
   }
 </style>
