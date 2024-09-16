@@ -11,8 +11,10 @@ export const score = writable(0);
 
 export const playerChoice = writable<Choice | undefined>();
 export const theHouseChoice = writable<Choice | undefined>();
+export const currentResult = writable<number | undefined>();
 
 export const increaseScore = () => {
+  currentResult.update(() => 1);
   score.update((lastScore) => lastScore + 1);
 };
 
@@ -27,6 +29,7 @@ export const setTheHouseChoice = () => {
 export const reset = () => {
   playerChoice.update(() => undefined);
   theHouseChoice.update(() => undefined);
+  currentResult.update(() => undefined);
 };
 
 const getRandomChoice = () => {
