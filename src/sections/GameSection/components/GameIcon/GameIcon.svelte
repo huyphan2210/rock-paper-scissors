@@ -69,7 +69,7 @@
       animation: none;
       cursor: none;
       pointer-events: none;
-      width: 25%;
+      width: 30%;
       min-width: 8rem;
       img {
         width: 100%;
@@ -81,7 +81,7 @@
       cursor: none;
       pointer-events: none;
       animation: none;
-      width: 25%;
+      width: 30%;
       min-width: 8rem;
       img {
         width: 100%;
