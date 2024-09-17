@@ -14,7 +14,6 @@ export const theHouseChoice = writable<Choice | undefined>();
 export const currentResult = writable<number | undefined>();
 
 export const increaseScore = () => {
-  currentResult.update(() => 1);
   score.update((lastScore) => lastScore + 1);
 };
 
