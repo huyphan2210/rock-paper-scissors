@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import {
+    currentResult,
     increaseScore,
     playerChoice,
     reset,
@@ -23,6 +24,7 @@
       if (result === 1) {
         increaseScore();
       }
+      currentResult.update(() => result);
     }, 5000);
   });
 </script>
