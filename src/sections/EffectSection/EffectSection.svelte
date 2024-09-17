@@ -4,6 +4,7 @@
   import balloonCoral from "../../assets/images/balloon-coral.svg";
   import balloonGreen from "../../assets/images/balloon-green.svg";
   import balloonRed from "../../assets/images/balloon-red.svg";
+  import whiteFlag from "../../assets/images/white-flag.svg";
   import { currentResult } from "../../store/ScoreStore";
 
   const balloons = [
@@ -26,6 +27,13 @@
       alt="balloon"
     />
   {/each}
+  <img
+    class="white-flag"
+    class:reveal={$currentResult === -1}
+    src={whiteFlag}
+    loading="lazy"
+    alt="White Flag"
+  />
 </section>
 
 <style lang="scss">
@@ -37,17 +45,56 @@
     .balloon {
       position: absolute;
       top: 100%;
-      width: 5rem;
-      transition: 10s;
+      width: 10rem;
 
       &.fly {
-        top: 0;
+        animation: win 10s normal;
       }
     }
+
     @for $i from 1 through 5 {
       .balloon:nth-child(#{$i}) {
-        left: #{random(100) + "%"};
+        left: #{($i - 1) * 20 + "%"};
       }
+    }
+  }
+
+  .white-flag {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10%;
+    min-width: 10rem;
+    opacity: 0;
+    &.reveal {
+      opacity: 1;
+      animation: lose 2s alternate-reverse infinite;
+    }
+  }
+
+  @keyframes win {
+    0% {
+      top: 100%;
+    }
+    100% {
+      top: 0;
+      transform: translateY(-100%);
+    }
+  }
+
+  @keyframes lose {
+    0% {
+      rotate: -15deg;
+    }
+    100% {
+      rotate: 30deg;
+    }
+  }
+
+  @media screen and (min-width: 720px) {
+    .white-flag {
+      top: 80%;
     }
   }
 </style>
